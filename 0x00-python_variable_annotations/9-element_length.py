@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Basic annotations - length of a sequence
 """
-from typing import Iterable, list, Sequence, Tuple
+from typing import Iterable, List, Sequence, Tuple
 
 
 def element_length(lst: Iterable[Sequence]) -> list[Tuple[Sequence, int]]:
