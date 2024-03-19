@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """ Safely get value """
 
-from typing import Mapping, Any, Union
+from typing import Mapping, Any, TypeVar, Union
 
-Res = Union[Any, None]
-D = Union[Any, None]
+T = TypeVar('T')
 
-
-def safely_get_value(dct: Mapping[Any, Any], key: Any, default: D = None) -> Res:
+def safely_get_value(dct: Mapping, key: Any, default: T = None) -> Union[Any, T]:
     """ Return the value of a key in a dictionary or the default value"""
     if key in dct:
         return dct[key]
     else:
         return default
+
