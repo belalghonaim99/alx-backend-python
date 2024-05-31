@@ -161,7 +161,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             self.apache2_repos,
         )
 
-
     @classmethod
     def tearDownClass(cls) -> None:
         """Cleans up class fixtures after running tests."""
