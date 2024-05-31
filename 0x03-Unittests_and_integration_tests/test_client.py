@@ -51,7 +51,7 @@ class TestGithubOrgClient(unittest.TestCase):
             )
 
     @patch("client.get_json")
-    def test_public_repos(self, mock_json: MagicMock) -> None:
+    def test_public_repos(self, mock_get_json: MagicMock) -> None:
         """Tests the `public_repos` method."""
         Payload = {
             'repos_url': "https://api.github.com/users/google/repos",
@@ -90,12 +90,12 @@ class TestGithubOrgClient(unittest.TestCase):
                 },
             ]
         }
-        mock_json.return_value = Payload["repos"]
+        mock_get_json.return_value = Payload["repos"]
         with patch(
                 "client.GithubOrgClient._public_repos_url",
                 new_callable=PropertyMock,
-                ) as public_repos:
-            public_repos.return_value = Payload["repos_url"]
+                ) as mock_public_repos_url:
+            mock_public_repos_url.return_value = Payload["repos_url"]
             self.assertEqual(
                 GithubOrgClient("google").public_repos(),
                 [
@@ -103,8 +103,8 @@ class TestGithubOrgClient(unittest.TestCase):
                     "kratu",
                 ],
             )
-            public_repos.assert_called_once()
-        mock_json.assert_called_once()
+            mock_public_repos_url.assert_called_once()
+        mock_get_json.assert_called_once()
 
     @parameterized.expand([
         ({'license': {'key': "bsd-3-clause"}}, "bsd-3-clause", True),
