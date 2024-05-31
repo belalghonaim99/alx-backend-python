@@ -118,14 +118,13 @@ class TestGithubOrgClient(unittest.TestCase):
 
 """ Integration test for the `GithubOrgClient` class."""
 
-
 @parameterized_class([
     {
         'org_payload': TEST_PAYLOAD[0][0],
         'repos_payload': TEST_PAYLOAD[0][1],
         'expected_repos': TEST_PAYLOAD[0][2],
         'apache2_repos': TEST_PAYLOAD[0][3],
-    },-
+    },
 ])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """ Tests the `GithubOrgClient` class."""
@@ -154,6 +153,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             GithubOrgClient("google").public_repos(),
             self.expected_repos,
         )
+
+
     def test_public_repos_with_license(self) -> None:
         """Tests the `public_repos` method with a license argument."""
         self.assertEqual(
@@ -161,7 +162,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             self.apache2_repos,
         )
 
-    @classmethod
-    def tearDownClass(cls) -> None:
+
+@classmethod
+def tearDownClass(cls) -> None:
         """Cleans up class fixtures after running tests."""
         cls.get_patcher.stop()
