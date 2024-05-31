@@ -116,7 +116,6 @@ class TestGithubOrgClient(unittest.TestCase):
         client_with_licence = org_client.has_license(repo, key)
         self.assertEqual(client_with_licence, expect)
 
-""" Integration test for the `GithubOrgClient` class."""
 
 @parameterized_class([
     {
