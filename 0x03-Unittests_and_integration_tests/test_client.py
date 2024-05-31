@@ -160,7 +160,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         )
 
 
-    @classmethod
-    def tearDownClass(cls) -> None:
+@classmethod
+def tearDownClass(cls) -> None:
         """Cleans up class fixtures after running tests."""
         cls.get_patcher.stop()
