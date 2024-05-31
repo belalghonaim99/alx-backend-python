@@ -74,6 +74,7 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
+    """ Tests the `memoize` decorator."""
     def test_memoize(self) -> None:
         """ Tests the `memoize` decorator."""
         class TestClass:
@@ -85,6 +86,7 @@ class TestMemoize(unittest.TestCase):
                 return self.a_method()
         with patch.object(
                 TestClass,
+                "a_method",
                 return_value=lambda: 42,
                 ) as a_b:
             testClass = TestClass()

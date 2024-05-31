@@ -116,7 +116,7 @@ class TestGithubOrgClient(unittest.TestCase):
         client_with_licence = org_client.has_license(repo, key)
         self.assertEqual(client_with_licence, expect)
 
-
+""" Integration test for the `GithubOrgClient` class."""
 @parameterized_class([
     {
         'org_payload': TEST_PAYLOAD[0][0],
@@ -134,7 +134,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
             'https://api.github.com/orgs/google': cls.org_payload,
             'https://api.github.com/orgs/google/repos': cls.repos_payload,
         }
-
+        """ Integration test for the `GithubOrgClient` class."""
         def get_payload(url):
             if url in routePayload:
                 return Mock(**{'json.return_value': routePayload[url]})
